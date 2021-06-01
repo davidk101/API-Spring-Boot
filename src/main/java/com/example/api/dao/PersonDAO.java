@@ -2,6 +2,7 @@ package com.example.api.dao;
 
 import com.example.api.model.Person;
 
+import java.util.List;
 import java.util.UUID;
 
 // operations allowed for DB - Data Access Object
@@ -14,5 +15,8 @@ public interface PersonDAO {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
+
+    // implemented in FakePersonDataAccessService
+    List<Person> selectAllPeople();
 
 }
