@@ -1,5 +1,7 @@
 package com.example.api.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Person {
@@ -8,8 +10,8 @@ public class Person {
     private final String name;
 
     // constructor
-    public Person(UUID id, String name) {
-        this.id = id;
+    public Person(@JsonProperty("id") UUID id, @JsonProperty("name") String name) {
+        this.id = id; // generated from server and need not be sent from Postman client
         this.name = name;
 
     }
