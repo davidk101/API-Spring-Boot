@@ -3,8 +3,10 @@ package com.example.api.dao;
 import com.example.api.model.Person;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+// workflow : PersonDAO -> FakePersonDataAccessService -> PersonService -> PersonController
 // operations allowed for DB - Data Access Object
 public interface PersonDAO {
 
@@ -16,7 +18,13 @@ public interface PersonDAO {
         return insertPerson(id, person);
     }
 
-    // implemented in FakePersonDataAccessService
+    // implemented in PersonService
     List<Person> selectAllPeople();
+
+    Optional<Person> selectPersonById(UUID id);
+
+    int deletePersonById(UUID id);
+
+    int updatePersonById(UUID id, Person person);
 
 }

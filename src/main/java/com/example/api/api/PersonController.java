@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RequestMapping("api/v1/person") // creating endpoint
@@ -30,6 +31,12 @@ public class PersonController {
     public List<Person> getAllPeople(){ // served as a GET request
 
         return personService.getAllPeople();
+    }
+
+    @GetMapping(path = "/{id}") // allows for /id path
+    public Person getPersonById(@PathVariable("id") UUID id){ // converting id from postman client to UUID
+
+        return personService.getPersonById(id).orElse(null);
     }
 
 }
