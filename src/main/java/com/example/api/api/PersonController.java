@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+// exposing functions to a REST API
 
 @RequestMapping("api/v1/person") // creating endpoint
 
@@ -16,7 +17,7 @@ public class PersonController {
 
     private final PersonService personService;
 
-    @Autowired // dependence injection
+    @Autowired // dependency injection
     public PersonController(PersonService personService){
         this.personService = personService;
     }
@@ -33,10 +34,22 @@ public class PersonController {
         return personService.getAllPeople();
     }
 
-    @GetMapping(path = "/{id}") // allows for /id path
+    @GetMapping(path = "{id}") // allows for /id path
     public Person getPersonById(@PathVariable("id") UUID id){ // converting id from postman client to UUID
 
         return personService.getPersonById(id).orElse(null);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deletePersonById(@PathVariable("id") UUID id){
+
+        personService.deletePerson(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person personToUpdate){
+
+        personService.updatePerson(id, personToUpdate);
     }
 
 }

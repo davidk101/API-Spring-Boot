@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+// in memory-DB for this example
+// UUID - 128 bits (36 characters)
 // workflow : PersonDAO -> FakePersonDataAccessService -> PersonService -> PersonController
 // operations allowed for DB - Data Access Object
+
 public interface PersonDAO {
 
     int insertPerson(UUID id, Person person);
