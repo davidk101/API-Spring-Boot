@@ -36,12 +36,12 @@ public class FakePersonDataAccessService implements PersonDAO {
 
         Optional<Person> personMaybe = selectPersonById(id);
 
-        if (personMaybe.isEmpty()){
-            return 0;
-        }
-        else {
+        if (personMaybe.isPresent()){
             DB.remove(personMaybe.get());
             return 1;
+        }
+        else {
+            return 0;
         }
     }
 

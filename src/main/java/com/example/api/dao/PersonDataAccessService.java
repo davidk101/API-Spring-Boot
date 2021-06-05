@@ -9,6 +9,7 @@ import java.util.UUID;
 
 // dependence injection
 // DB implementation
+// a container is running and exposing port 5432(5432 is the default port for running a postgres instance using a docker image)
 @Repository("postgres")
 
 public class PersonDataAccessService implements PersonDAO{
