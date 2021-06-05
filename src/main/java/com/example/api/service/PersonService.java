@@ -10,13 +10,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+// this is where we inject the actual interface
+
 @Service
 public class PersonService {
 
     private final PersonDAO personDAO;
 
     @Autowired
-    public PersonService(@Qualifier("fakeDAO") PersonDAO personDAO){
+    public PersonService(@Qualifier("postgres") PersonDAO personDAO){
 
         this.personDAO = personDAO;
     }
