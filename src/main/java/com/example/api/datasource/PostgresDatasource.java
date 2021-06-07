@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PostgresDatasource {
 
+    // Hikari is the recommended data source for Spring Boot
     @Bean
     @ConfigurationProperties("app.datasource")
     public HikariDataSource hikariDataSource(){ // instantiate datasource as a bean
